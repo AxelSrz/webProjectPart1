@@ -1,0 +1,43 @@
+<%- include layouts/header.ejs %>
+<div class="container">
+  <form method="post" action="/questions/edit/<%=data.question.questionId%>">
+    Question: <input type="text" name="question" value="<%=data.question.question%>" required /></td>
+    <div class="container" id="ans">
+      <% for(answer of data.answers){ %>
+      <label><%= String.fromCharCode(97 + answer.seqNo)%>)</label><input type="text" name="answers[<%=answer.seqNo%>][body]" placeholder="Answer" value="<%= answer.answer%>" required />
+      <br  />
+      <% } %>
+    </div>
+    <br />
+    <input type="button" class="btn btn-default" value="Add answer" onclick="addAnswerForm()" />
+    &nbsp; <input type="button" class="btn btn-default" value="Remove answer" onclick="removeAnswerForm()" />
+    <br />
+    <br />
+    <div>
+      Correct answer:
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= String.fromCharCode(97 + data.question.correctAnswer)%>) <span class="caret"></span>
+        </button>
+        <input type="hidden" name="correct" id="correct" value="<%=data.question.correctAnswer%>" />
+        <ul class="dropdown-menu">
+          <% for(answer of data.answers){ %>
+          <li><a href="#" data-value="<%=answer.seqNo%>"><%= String.fromCharCode(97 + answer.seqNo)%>)</a></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <br />
+    <label>Categories (separated by commas):</label>
+    <br />
+    <textarea class="text" cols="40" rows ="5" name="rawCategories"><%= data.categories.replace(/ /g,",") %></textarea>
+    <input type="hidden" name="previousCategories" value="<%= data.categories.replace(/ /g,',') %>" />
+    <br />
+    <br />
+    &nbsp; <input type="submit" name="submit" value="Save" />
+    <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
+  </form>
+</div>
+
+
+<%- include layouts/footer.ejs %>

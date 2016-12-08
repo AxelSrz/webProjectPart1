@@ -1,0 +1,43 @@
+<%- include layouts/header.ejs %>
+
+<div class="page-data">
+  <div class="data-btn">
+    <a href="/questions/add" class="btn">+ Add</a>
+  </div>
+  <div class="container">
+    <table class="table table-striped">
+      <tr>
+        <th width="50px">No</th>
+        <th>Question</th>
+        <th>Correct Answer</th>
+        <th>Modify</th>
+      </tr>
+
+      <% if(data.length){
+
+        for(var i = 0;i < data.length;i++) { %>
+
+          <tr>
+            <td><%= data[i].questionId%></td>
+            <td><%= data[i].question%></td>
+            <td><%= String.fromCharCode(97 + data[i].correctAnswer) %>)</td>
+            <td>
+              <a class="a-inside edit" href="../questions/edit/<%=data[i].questionId%>">View/Edit</a>
+              <a class="a-inside delete" href="../questions/delete/<%=data[i].questionId%>">Delete</a>
+            </td>
+          </tr>
+          <% }
+
+        }else{ %>
+          <tr>
+            <td colspan="3">No questions added</td>
+          </tr>
+          <% } %>
+
+
+
+        </table>
+      </div>
+    </div>
+
+    <%- include layouts/footer.ejs %>
