@@ -33,7 +33,7 @@ app.use(
 );
 
 // view engine setup
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || 3007);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public

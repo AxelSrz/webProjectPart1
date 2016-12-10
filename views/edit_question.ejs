@@ -30,7 +30,7 @@
     <br />
     <label>Categories (separated by commas):</label>
     <br />
-    <textarea class="text" cols="40" rows ="5" name="rawCategories"><%= data.categories.replace(/ /g,",") %></textarea>
+    <textarea class="text" cols="40" rows ="5" name="rawCategories" required><%= data.categories.replace(/ /g,",") %></textarea>
     <input type="hidden" name="previousCategories" value="<%= data.categories.replace(/ /g,',') %>" />
     <br />
     <br />
