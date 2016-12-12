@@ -45,7 +45,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/', index);
+app.get('/', questions.list);
+app.get('/find', questions.find);
 app.get('/questions', questions.list);
 app.get('/questions/add', questions.add);
 app.post('/questions/add', questions.save);

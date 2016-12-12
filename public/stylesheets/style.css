@@ -14,23 +14,23 @@ a {
 }
 
 #wrapper{
-    
+
     margin-top:30px;
     width:90%;
     min-height:600px;
     margin-left:5%;
     border:1px solid #ddd;
     background:#fff;
-   
+
 }
 
 .page-container{padding:20px;}
 .page-data{padding:10px;}
 .page-header{
-    
+    margin-top: 0px !important;
     padding:2px;
     padding-left:40px;
-    background:#665847;color:#FEFFFD;
+    background:#000;color:#FEFFFD;
 }
 .data-btn{padding-left:8px}
 .data-btn button{
@@ -45,7 +45,7 @@ a {
 .a-inside.delete{background-color:#D23641;color:#fff;}
 
 input[type="text"]{
-    
+
     border:1px solid #ddd;
     height:26px;
     width:300px;
@@ -54,7 +54,7 @@ input[type="text"]{
     background-color:#D23641;color:#fff;
     border:1px solid #d32132;color:#fff;
     padding:8px 35px;font-weight:bold;
-   
+
 
 }
 input[type="submit"]{

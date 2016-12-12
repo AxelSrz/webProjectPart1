@@ -12,7 +12,38 @@ exports.list = function(req, res){
       if(err)
         console.log("Error Selecting : %s ",err );
 
-      res.render('questions',{page_title:"Questions",data:rows});
+      res.render('questions',{page_title:"Questions",data:rows, category:''});
+
+
+    });
+
+    //console.log(query.sql);
+  });
+
+};
+
+exports.find = function(req, res){
+  var category = req.query.category.toLowerCase();
+  req.getConnection(function(err,connection){
+    if (category == '') {
+      var query = connection.query('SELECT * FROM questions',function(err,rows)
+      {
+
+        if(err)
+          console.log("Error Selecting : %s ",err );
+
+        res.render('questions',{page_title:"Questions",data:rows, category:''});
+
+
+      });
+    }
+    var query = connection.query('SELECT * FROM questions q, category c WHERE q.questionId = c.questionId AND c.categoryName = ?',[category],function(err,rows)
+    {
+
+      if(err)
+        console.log("Error Selecting : %s ",err );
+
+      res.render('questions',{page_title:"Questions",data:rows, category:category});
 
 
     });
@@ -82,7 +113,7 @@ exports.save = function(req,res){
       });
 
       input.rawCategories.forEach(function(category, index){
-        connection.query("INSERT INTO category set ? ",{ questionId : id, categoryName : category }, function(err, rows) {
+        connection.query("INSERT INTO category set ? ",{ questionId : questionIdentifier, categoryName : category }, function(err, rows) {
           if (err)
             console.log("Error inserting : %s ",err );
         });
@@ -179,7 +210,7 @@ exports.delete_question = function(req,res){
       if(err)
       console.log("Error deleting : %s ",err );
 
-      res.redirect('/customers');
+      res.redirect('/questions');
 
     });
 

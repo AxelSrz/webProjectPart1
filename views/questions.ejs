@@ -1,8 +1,18 @@
 <%- include layouts/header.ejs %>
-
-<div class="page-data">
-  <div class="data-btn">
-    <a href="/questions/add" class="btn">+ Add</a>
+<% if (typeof category == 'undefined') category = ''; %>
+<div class="page-data container">
+  <div class="container" style="margin-left: 12px; margin-bottom: 10px;">
+    <div class="row">
+      <form action="/find" method="get">
+        <a href="/questions/add" class="btn btn-default">+ Add</a>
+        &nbsp;&nbsp;
+        <label>Search by category:</label>
+        &nbsp;
+        <input type="text" name="category" value="<%=category%>" />
+        &nbsp;
+        <input type="submit" class="btn btn-primary" value="Search" />
+      </form>
+    </div>
   </div>
   <div class="container">
     <table class="table table-striped">

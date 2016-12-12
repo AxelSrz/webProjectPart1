@@ -16,7 +16,7 @@ function addQuestion(){
 
 function cancelAdd(){
 
-  window.location.href = '/questions';
+  window.location.href = '/';
 }
 
 function addAnswerForm(){
